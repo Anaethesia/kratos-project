@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package api.student.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "helloworld/api/student/v1;v1";
+option java_multiple_files = true;
+option java_package = "api.student.v1";
+
+service Student {
+	rpc CreateStudent (StudentRequest) returns (StudentResp) {
+		option(google.api.http) = {
+			get: "/student/{name}/{age}"
+		};
+	};
+
+}
+
+message StudentRequest {
+	string name = 1;
+	uint64 age = 2;
+}
+
+message StudentResp {
+	string messsage = 1;
+}
